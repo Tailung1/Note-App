@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { INote } from "../App";
+import NoteList from "./noteList";
 
 interface AddNoteProps {
   notes: INote[];
@@ -21,8 +22,6 @@ const AddNote: React.FC<AddNoteProps> = ({ notes, setNotes }) => {
     setTitle("");
     setContent("");
   };
-  const handleDelete = (deleteID:number) =>
-    setNotes((prevNotes) => [...prevNotes.filter((note) => deleteID !== note.id)]);
 
   return (
     <div>
@@ -49,18 +48,7 @@ const AddNote: React.FC<AddNoteProps> = ({ notes, setNotes }) => {
         </button>
       </form>
       <div className="flex flex-row gap-4 flex-wrap">
-        {notes.map((note) => (
-          <div
-            className=" bg-yellow-400 w-[150px] h-[100px] flex flex-col gap-2 "
-            key={Math.random()}
-          >
-            <h1>{note.title}</h1>
-            <p>{note.content}</p>
-            <button onClick={()=>handleDelete(note.id)} className="bg-red-500 w-[50px]">
-              Delete
-            </button>
-          </div>
-        ))}
+        <NoteList notes={notes} setNotes={setNotes} />
       </div>
     </div>
   );

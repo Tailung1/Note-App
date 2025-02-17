@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddNote from "./components/addNote";
 
 
+
  export interface INote {
   title: string;
   content: string;
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <AddNote notes={notes} setNotes={setNotes} />
-      
+     
     </>
   );
 }
